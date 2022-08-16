@@ -30,6 +30,9 @@ void counting_sort(int *array, size_t size)
 	int *count = malloc(sizeof(int) * max);
 	int *new_array = malloc(sizeof(int) * size);
 
+	if (size < 2)
+		return;
+
 	if (count == NULL)
 	{
 		free(count);
@@ -41,9 +44,6 @@ void counting_sort(int *array, size_t size)
 		free(new_array);
 		return;
 	}
-
-	if (size < 2)
-		return;
 
 	for (i = 0; i < (int)size; i++)
 		count[array[i]]++;
