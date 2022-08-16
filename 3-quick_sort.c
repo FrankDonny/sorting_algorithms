@@ -73,5 +73,8 @@ void sorting(int *array, int lowIdx, int highIdx)
  */
 void quick_sort(int *array, size_t size)
 {
+	if (size < 2)
+		return;
+
 	sorting(array, 0, (int)size - 1);
 }
