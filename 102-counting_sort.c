@@ -32,11 +32,13 @@ void counting_sort(int *array, size_t size)
 
 	if (size < 2)
 		return;
+
 	if (count == NULL)
 	{
 		free(count);
 		return;
 	}
+
 	if (new_array == NULL)
 	{
 		free(new_array);
@@ -45,14 +47,14 @@ void counting_sort(int *array, size_t size)
 
 	for (i = 0; i < (int)size; i++)
 		count[array[i]]++;
-	for (i = 1; i <= max; i++)
-		count[i] += count[i - 1];
+	for (i = 1; i <= max + 1; i++)
+		count[i]  += count[i - 1];
 	for (i = (int)size - 1; i >= 0; i--)
-		new_array[count[array[i]]] = array[i];
+		new_array[--count[array[i]]] = array[i];
 	for (i = 0; i < (int)size; i++)
 		array[i] = new_array[i];
 
 	print_array(count, max + 1);
-	free(count);
-	free(new_array);
+        free(count);
+        free(new_array);
 }
